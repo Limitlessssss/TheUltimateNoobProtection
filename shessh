@@ -1,0 +1,48 @@
+//chapter 1
+when a debugger or any reversing tool is started something always changes but people do not understand what even chnages or what it does etc sorry for my grammar alright so usually
+when we check for debugger we will check a windows structure that is called PEB:Process Enviroment Block this contains many values the one we will be checking is NtGlobalFlag usually 
+this  is an offset with a value 0xbc you can check out win structs on this website https://www.vergiliusproject.com/ <- useful  nvm too lazy im just gonna write it.
+
+
+
+
+
+
+
+ima create a class cause im lame like that 
+
+
+typedef NTSTATUS (NTAPI *TNtQueryInformationProcess)(
+    IN HANDLE           ProcessHandle,
+    IN PROCESSINFOCLASS ProcessInformationClass,
+    OUT PVOID           ProcessInformation,
+    IN ULONG            ProcessInformationLength,
+    OUT PULONG          ReturnLength
+    );
+
+
+
+
+
+
+//if there is error im sorry im codng this on a a file on github lol
+
+
+bool BdebuggerPresent;
+class Nodebug {
+
+void PrsentD() {
+if (IsDebuggerPresent())
+    ExitProcess(0);
+    
+}
+
+void remotedebug() {
+if (true == CheckRemoteDebuggerPresent(GetCurrentProcess(), &BdebuggerPresent) &&
+    true == BdebuggerPresent)
+    ExitProcess(0);
+}
+
+//hmm fuck this ima do this at home lol
+
+}
